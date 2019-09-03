@@ -1,24 +1,13 @@
 CC=gcc
-CFLAGS=-fsyntax-only -Wpedantic -pedantic-errors \
--w  -Wextra  -Wall  -Waddress  -Waddress-of-packed-member \
--Waggregate-return -Wno-cpp  -Wdangling-else  -Wdate-time \
--Wno-attribute-warning \
--Wempty-body  -Wenum-compare  -Wno-endif-labels  -Wexpansion-to-defined \
--Werror -Wfatal-errors \
--Wfloat-equal  -Wformat -Wformat-security  -Wformat-signedness \
--Wformat-y2k  -Wframe-address -Wincompatible-pointer-types -Wnull-dereference \
--Woverride-init-side-effects  -Woverlength-strings -Wredundant-decls \
--Wrestrict  -Wno-return-local-addr -Wreturn-type -Wshadow \
--Wfloat-conversion -Wsizeof-pointer-div -Wsizeof-pointer-memaccess \
--Wstack-protector -Wstrict-aliasing \
+CFLAGS= -Wextra  -Wall -Waddress \
+-Wno-attribute-warning -Wsizeof-pointer-div -Wstack-protector \
 -Wsuggest-final-types   -Wsuggest-final-methods \
--Wswitch -Wswitch-unreachable -Wtrampolines \
 -Wvector-operation-performance
 
 all: quat #tests
 
 quat.o: quat.c
-	$(CC) -c quat.c
+	$(CC) $(CFLAGS) -c quat.c
 
 # tests: tests.o
 # 	$(CC) -o tests tests.o
