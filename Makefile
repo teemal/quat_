@@ -33,5 +33,7 @@ quat.o: quat.h
 clean:
 	rm -f quat quat.o
 
+comment="YOU SHOULD BE ADDING COMMENTS TO YOUR COMMITS! NAUGHTY NAUGHTY!"
+
 git:
-	git add . && git commit -m "commiting so you don't cry later"
+	git add . && git commit -m $(comment)
