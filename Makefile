@@ -1,28 +1,24 @@
 CC=gcc
-CFLAGS=-fsyntax-only  -fmax-errors=n -Wpedantic -pedantic-errors \
+CFLAGS=-fsyntax-only -Wpedantic -pedantic-errors \
 -w  -Wextra  -Wall  -Waddress  -Waddress-of-packed-member \
--Waggregate-return  -Waligned-new \
--Wno-cpp  -Wdangling-else  -Wdate-time -Wdelete-incomplete \
+-Waggregate-return -Wno-cpp  -Wdangling-else  -Wdate-time \
 -Wno-attribute-warning \
 -Wempty-body  -Wenum-compare  -Wno-endif-labels  -Wexpansion-to-defined \
--Werror -Wextra-semi  -Wfatal-errors \
+-Werror -Wfatal-errors \
 -Wfloat-equal  -Wformat -Wformat-security  -Wformat-signedness \
 -Wformat-y2k  -Wframe-address -Wincompatible-pointer-types -Wnull-dereference \
 -Woverride-init-side-effects  -Woverlength-strings -Wredundant-decls \
 -Wrestrict  -Wno-return-local-addr -Wreturn-type -Wshadow \
 -Wfloat-conversion -Wsizeof-pointer-div -Wsizeof-pointer-memaccess \
--Wstack-protector  -Wstack-usage=byte-size  -Wstrict-aliasing \
--Wsuggest-final-types   -Wsuggest-final-methods  -Wsuggest-override \
+-Wstack-protector -Wstrict-aliasing \
+-Wsuggest-final-types   -Wsuggest-final-methods \
 -Wswitch -Wswitch-unreachable -Wtrampolines \
 -Wvector-operation-performance
 
 all: quat #tests
 
-quat: quat.o
-	$(CC) -o quat quat.o
-
-quat.o: quat.h
-	$(CC) -c quat.c quat.h
+quat.o: quat.c
+	$(CC) -c quat.c
 
 # tests: tests.o
 # 	$(CC) -o tests tests.o
@@ -31,9 +27,13 @@ quat.o: quat.h
 # 	$(CC) -c quat_test.c quat.h
 
 clean:
-	rm -f quat quat.o
+	rm -f quat *.o *.gch
 
-comment="YOU SHOULD BE ADDING COMMENTS TO YOUR COMMITS! NAUGHTY NAUGHTY!"
+comment="1"
 
 git:
+ifeq ($(comment),"1")
+	@echo "Naughty naughty! Add comments with make git comment=\"comment_here\""
+else
 	git add . && git commit -m "$(comment)"
+endif
