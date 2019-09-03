@@ -16,11 +16,19 @@ CFLAGS=-fsyntax-only  -fmax-errors=n -Wpedantic -pedantic-errors \
 -Wswitch -Wswitch-unreachable -Wtrampolines \
 -Wvector-operation-performance
 
+all: quat #tests
+
 quat: quat.o
 	$(CC) -o quat quat.o
 
-quat.o: quat.c
-	$(CC) -c quat.c
+quat.o: quat.h
+	$(CC) -c quat.c quat.h
+
+# tests: tests.o
+# 	$(CC) -o tests tests.o
+
+# tests.o: quat.h
+# 	$(CC) -c quat_test.c quat.h
 
 clean:
 	rm -f quat quat.o
