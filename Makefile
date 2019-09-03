@@ -36,4 +36,4 @@ clean:
 comment="YOU SHOULD BE ADDING COMMENTS TO YOUR COMMITS! NAUGHTY NAUGHTY!"
 
 git:
-	git add . && git commit -m $(comment)
+	git add . && git commit -m "$(comment)"
