@@ -183,7 +183,16 @@ void test_mat4x4_mul(void){
 }
 
 void test_mat4x4_mul_vec4(void){
-	//TODO
+	int i;
+	int arrSize = 4;
+	mat4x4 M = {{1,2,3,4}, {5,6,7,8}, {9,10,11,12}, {13,14,15,16}};
+	vec4 v = {1,2,3,4};
+	vec4 r = {0,0,0,0};
+	vec4 expected = {90,100,110,120};
+	mat4x4_mul_vec4(r, M, v);
+	for(i = 0; i < arrSize; i++){
+		TEST_ASSERT_EQUAL_DOUBLE(expected[i], r[i]);
+	}
 }
 
 void test_mat4x4_translate(void){
