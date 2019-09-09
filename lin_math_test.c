@@ -119,11 +119,31 @@ void test_mat4x4_transpose(void){
 }
 
 void test_mat4x4_add(void){
-	//TODO
+	int i, j;
+	int arrSize = 4;
+	mat4x4 a = {{1,2,3,4}, {5,6,7,8}, {9,10,11,12}, {13,14,15,16}};
+	mat4x4 b = {{1,2,3,4}, {5,6,7,8}, {9,10,11,12}, {13,14,15,16}};
+	mat4x4 M = {{0,0,0,0}, {0,0,0,0}, {0,0,0,0} , {0,0,0,0}};
+	mat4x4 expected = {{2,4,6,8}, {10,12,14,16}, {18,20,22,24}, {26,28,30,32}};
+	mat4x4_add(M, a, b);
+	for(i = 0; i < arrSize; i++){
+		for(j = 0; j < arrSize; j++)
+			TEST_ASSERT_EQUAL_DOUBLE(expected[i][j], M[i][j]);
+	}
 }
 
 void test_mat4x4_sub(void){
-	//TODO
+	int i, j;
+	int arrSize = 4;
+	mat4x4 a = {{1,2,3,4}, {5,6,7,8}, {9,10,11,12}, {13,14,15,16}};
+	mat4x4 b = {{1,2,3,4}, {5,6,7,8}, {9,10,11,12}, {13,14,15,16}};
+	mat4x4 M = {{0,0,0,0}, {0,0,0,0}, {0,0,0,0} , {0,0,0,0}};
+	mat4x4 expected = {{0,0,0,0}, {0,0,0,0}, {0,0,0,0} , {0,0,0,0}};
+	mat4x4_sub(M, a, b);
+	for(i = 0; i < arrSize; i++){
+		for(j = 0; j < arrSize; j++)
+			TEST_ASSERT_EQUAL_DOUBLE(expected[i][j], M[i][j]);
+	}
 }
 
 void test_mat4x4_scale(void){
