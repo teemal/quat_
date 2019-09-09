@@ -52,7 +52,6 @@ void test_vec4_reflect(void){
 }
 
 void test_mat4x4_identity(void){
-	//TODO find more elegant solution for assert
 	int i, j;
 	int arrDim = 4;
 	mat4x4 expected = {{1,0,0,0},{0,1,0,0},{0,0,1,0},{0,0,0,1}};
@@ -71,7 +70,6 @@ void test_mat4x4_identity(void){
 }
 
 void test_mat4x4_dup(void){
-	//TODO more elegant solution to assert
 	int i,j;
 	int arrDim = 4;
 	mat4x4 M = {{1,2,3,4}, {5,6,7,8}, {8,7,6,5}, {4,3,2,1}};
@@ -85,7 +83,6 @@ void test_mat4x4_dup(void){
 }
 
 void test_mat4x4_row(void){
-	//TODO
 	int i;
 	int arrSize = 4;
 	mat4x4 M = {{1,2,3,4}, {5,6,7,8}, {8,7,6,5}, {4,3,2,1}};
@@ -98,7 +95,15 @@ void test_mat4x4_row(void){
 }
 
 void test_mat4x4_col(void){
-	//TODO
+	int i;
+	int arrSize = 4;
+	mat4x4 M = {{1,2,3,4}, {5,6,7,8}, {8,7,6,5}, {4,3,2,1}};
+	vec4 r = {0,0,0,0};
+	mat4x4_col(r, M, 1);
+	TEST_ASSERT_EQUAL_DOUBLE(5, r[0]);
+	TEST_ASSERT_EQUAL_DOUBLE(6, r[1]);
+	TEST_ASSERT_EQUAL_DOUBLE(7, r[2]);
+	TEST_ASSERT_EQUAL_DOUBLE(8, r[3]);
 }
 
 void test_mat4x4_transpose(void){
