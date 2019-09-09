@@ -50,11 +50,34 @@ void test_vec4_reflect(void){
 }
 
 void test_mat4x4_identity(void){
-	//TODO
+	//TODO find more elegant solution for assert
+	int i, j;
+	int arrDim = 4;
+	mat4x4 expected = {{1,0,0,0},{0,1,0,0},{0,0,1,0},{0,0,0,1}};
+	mat4x4 M;
+	mat4x4_identity(M);
+	for(i = 0; i < arrDim; i++){
+		for(j = 0; j < arrDim; j++){
+			M[i][j] = i == j ? 1.f : 0.f;
+		}
+	}
+	for(i = 0; i < arrDim; i++){
+		for(j = 0; j < arrDim; j++){
+			TEST_ASSERT_EQUAL_DOUBLE(expected[i][j],M[i][j]);
+		}
+	}
 }
 
 void test_mat4x4_dup(void){
 	//TODO
+	mat4x4 M = {{1,2,3,4}, {5,6,7,8}, {8,7,6,5}, {4,3,2,1}};
+	mat4x4 N = {{0,0,0,0}, {0,0,0,0}, {0,0,0,0}, {0,0,0,0}};
+	mat4x4_dup(M, N);
+	for(i = 0; i < arrDim; i++){
+		for(j = 0; j < arrDim; j++){
+			TEST_ASSERT_EQUAL_DOUBLE(M[i][j],N[i][j]);
+		}
+	}
 }
 
 void test_mat4x4_row(void){
