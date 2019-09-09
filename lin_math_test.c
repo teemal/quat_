@@ -107,7 +107,15 @@ void test_mat4x4_col(void){
 }
 
 void test_mat4x4_transpose(void){
-	//TODO
+	int i, j;
+	int arrSize = 4;
+	mat4x4 M = {{1,2,3,4}, {5,6,7,8}, {8,7,6,5}, {4,3,2,1}};
+	mat4x4 N = {{0,0,0,0}, {0,0,0,0}, {0,0,0,0} , {0,0,0,0}};
+	mat4x4_transpose(N, M);
+	for(i = 0; i < arrSize; i++){
+		for(j = 0; j < arrSize; j++)
+			TEST_ASSERT_EQUAL_DOUBLE(N[i][j], M[j][i]);
+	}
 }
 
 void test_mat4x4_add(void){
