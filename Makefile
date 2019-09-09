@@ -2,18 +2,15 @@ CC=gcc
 CFLAGS= -Wextra  -Wall -Waddress \
 -Wno-attribute-warning -Wsizeof-pointer-div -Wstack-protector \
 -Wsuggest-final-types   -Wsuggest-final-methods \
--Wvector-operation-performance
+-Wvector-operation-performance -Wno-unused-variable #turn unused vars back on during debugging
 
-all: quat #tests
+all: quat quat_test
 
 quat.o: quat.c
 	$(CC) $(CFLAGS) -c quat.c
 
-# tests: tests.o
-# 	$(CC) -o tests tests.o
-
-# tests.o: quat.h
-# 	$(CC) -c quat_test.c quat.h
+quat_test.o: quat_test.c
+	$(CC) $(CFLAGS) -c quat_test.c
 
 clean:
 	rm -f quat *.o *.gch
