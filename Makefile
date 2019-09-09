@@ -4,16 +4,16 @@ CFLAGS= -Wextra  -Wall -Waddress \
 -Wsuggest-final-types   -Wsuggest-final-methods \
 -Wvector-operation-performance -Wno-unused-variable #turn unused vars back on during debugging
 
-all: quat quat_test
+all: quat lin_math_test
 
 quat.o: quat.c
 	$(CC) $(CFLAGS) -c quat.c
 
-quat_test.o: quat_test.c
-	$(CC) $(CFLAGS) -c quat_test.c
+lin_math_test:
+	$(CC) lin_math_test.c /home/osboxes/Desktop/Unity/src/unity.c -o lin_math_test
 
 clean:
-	rm -f quat *.o *.gch
+	rm -f quat lin_math_test *.o *.gch
 
 comment="1"
 
