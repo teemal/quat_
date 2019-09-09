@@ -161,11 +161,25 @@ void test_mat4x4_scale(void){
 }
 
 void test_mat4x4_scale_aniso(void){
-	//TODO
+	/*TODO I think this operation just scales the first 3
+	4d vectors from one matrix by another and then directly copies
+	over the final vector but I need to make sure before hammering out this test
+	*/
 }
 
 void test_mat4x4_mul(void){
-	//TODO
+	int i, j;
+	int arrSize = 4;
+	mat4x4 a = {{1,2,3,4}, {5,6,7,8}, {9,10,11,12}, {13,14,15,16}};
+	mat4x4 b = {{1,2,3,4}, {5,6,7,8}, {9,10,11,12}, {13,14,15,16}};
+	mat4x4 M = {{0,0,0,0}, {0,0,0,0}, {0,0,0,0} , {0,0,0,0}};
+	mat4x4 expected = {{90,100,110,120}, {202,228,254,280}, {314,356,398,440}, {426,484,542,600}};
+	mat4x4_mul(M, a, b);
+	for(i = 0; i < arrSize; i++){
+		for(j = 0; j < arrSize; j++){
+			TEST_ASSERT_EQUAL_DOUBLE(expected[i][j], M[i][j]);
+		}
+	}
 }
 
 void test_mat4x4_mul_vec4(void){
