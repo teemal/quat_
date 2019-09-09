@@ -2,6 +2,8 @@
 #include "linmath.h"
 #include <stdio.h>
 
+//TODO find more elegant solution to all asserts
+
 void test_vec3_mul_cross(void){
 	int i;
 	int arrSize = 3;
@@ -69,7 +71,7 @@ void test_mat4x4_identity(void){
 }
 
 void test_mat4x4_dup(void){
-	//TODO
+	//TODO more elegant solution to assert
 	int i,j;
 	int arrDim = 4;
 	mat4x4 M = {{1,2,3,4}, {5,6,7,8}, {8,7,6,5}, {4,3,2,1}};
@@ -84,6 +86,15 @@ void test_mat4x4_dup(void){
 
 void test_mat4x4_row(void){
 	//TODO
+	int i;
+	int arrSize = 4;
+	mat4x4 M = {{1,2,3,4}, {5,6,7,8}, {8,7,6,5}, {4,3,2,1}};
+	vec4 r = {0,0,0,0};
+	mat4x4_row(r, M, 1);
+	TEST_ASSERT_EQUAL_DOUBLE(2, r[0]);
+	TEST_ASSERT_EQUAL_DOUBLE(6, r[1]);
+	TEST_ASSERT_EQUAL_DOUBLE(7, r[2]);
+	TEST_ASSERT_EQUAL_DOUBLE(3, r[3]);
 }
 
 void test_mat4x4_col(void){
