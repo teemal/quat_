@@ -2,8 +2,22 @@
 #include "linmath.h"
 #include <stdio.h>
 
+/*
+Tests for the linmath header file.
+These tests describe oprations on vectors (the mathmatic kind not the data structure)
+, matrices, and quaternions. A description of what each
+operation is doing, and why it would be used, should be above each function.
+*/
+
 //TODO find more elegant solution to all asserts
 
+
+/*
+(a,b,c) * (x,y,z) = (b*z - c*y, c*x - a*z, a*y - b*x)
+Used for a lot of different things but the most
+common being the angle between two vectors
+or the projection of one normalized vector on another
+*/
 void test_vec3_mul_cross(void){
 	int i;
 	int arrSize = 3;
@@ -23,34 +37,25 @@ void test_vec3_mul_cross(void){
 	//TEST_ASSERT_EQUAL_DOUBLE_ARRAY(expected, r, arrSize);
 }
 
+/*
+the mirrored image of a vector
+*/
 void test_vec3_reflect(void){
-	//TODO
+	TEST_IGNORE_MESSAGE("coming back to flush this out once I figure out the logic behind it and get some values to test against");
 }
 
 void test_vec4_mul_cross(void){
-	// int i;
-	// int arrSize = 3;
-	// vec4 a = {1, 2, 3, 4};
-	// vec4 b = {6, 7, 8, 9};
-	// vec4 r = {0, 0, 0, 0};
-	// vec4 expected = {};
-	// vec4_mul_cross(r, a, b);
-	// for(i = 0; i < arrSize; i++){
-	// 	TEST_ASSERT_EQUAL_DOUBLE(expected[i], r[i]);
-	//TODO -- you can't do cross product on a 4D matrix?
-	//}
-
-	/*this is the more elegant test but I can't
-	figure out why I'm getting weird changing values
-	TODO
-	*/
-	//TEST_ASSERT_EQUAL_DOUBLE_ARRAY(expected, r, arrSize);
+	TEST_IGNORE_MESSAGE("coming back to flush this out once I figure out the logic behind it and get some values to test against");
 }
 
 void test_vec4_reflect(void){
-	//TODO
+	TEST_IGNORE_MESSAGE("coming back to flush this out once I figure out the logic behind it and get some values to test against");
 }
 
+/*
+An identity matrix is one with 1's running across it
+diagnally. It has the same use as the number 1 in real numbers
+*/
 void test_mat4x4_identity(void){
 	int i, j;
 	int arrDim = 4;
@@ -69,6 +74,9 @@ void test_mat4x4_identity(void){
 	}
 }
 
+/*
+duplicates a 4x4 matrix
+*/
 void test_mat4x4_dup(void){
 	int i,j;
 	int arrDim = 4;
@@ -82,6 +90,10 @@ void test_mat4x4_dup(void){
 	}
 }
 
+/*
+Gives row of a 4x4 matrix. Row N is the N-1th index
+for each subarray
+*/
 void test_mat4x4_row(void){
 	int i;
 	int arrSize = 4;
@@ -94,6 +106,9 @@ void test_mat4x4_row(void){
 	TEST_ASSERT_EQUAL_DOUBLE(3, r[3]);
 }
 
+/*
+Gives column of a 4x4 Matrix. Column N is the N-1th subarray itself
+*/
 void test_mat4x4_col(void){
 	int i;
 	int arrSize = 4;
@@ -106,6 +121,10 @@ void test_mat4x4_col(void){
 	TEST_ASSERT_EQUAL_DOUBLE(8, r[3]);
 }
 
+/*
+Gives transposed 4x4 matrix. 
+{{1,2},{3,4}} becomes {{1,3},{2,4}}
+*/ 
 void test_mat4x4_transpose(void){
 	int i, j;
 	int arrSize = 4;
@@ -117,7 +136,9 @@ void test_mat4x4_transpose(void){
 			TEST_ASSERT_EQUAL_DOUBLE(N[i][j], M[j][i]);
 	}
 }
-
+/*
+Simply the added values between two matrices
+*/
 void test_mat4x4_add(void){
 	int i, j;
 	int arrSize = 4;
@@ -131,7 +152,9 @@ void test_mat4x4_add(void){
 			TEST_ASSERT_EQUAL_DOUBLE(expected[i][j], M[i][j]);
 	}
 }
-
+/*
+Simply the subracted values between two matrices
+*/
 void test_mat4x4_sub(void){
 	int i, j;
 	int arrSize = 4;
@@ -145,7 +168,9 @@ void test_mat4x4_sub(void){
 			TEST_ASSERT_EQUAL_DOUBLE(expected[i][j], M[i][j]);
 	}
 }
-
+/*
+Scale a 4x4 matrix by N
+*/
 void test_mat4x4_scale(void){
 	int i, j;
 	int arrSize = 4;
@@ -165,8 +190,12 @@ void test_mat4x4_scale_aniso(void){
 	4d vectors from one matrix by another and then directly copies
 	over the final vector but I need to make sure before hammering out this test
 	*/
+	TEST_IGNORE_MESSAGE("coming back to flush this out once I figure out the logic behind it and get some values to test against");
 }
 
+/*
+Multiply 2 matrices together. 
+*/
 void test_mat4x4_mul(void){
 	int i, j;
 	int arrSize = 4;
@@ -182,6 +211,9 @@ void test_mat4x4_mul(void){
 	}
 }
 
+/*
+Multiply a 4x4 matrix by a 4d vector
+*/
 void test_mat4x4_mul_vec4(void){
 	int i;
 	int arrSize = 4;
@@ -195,16 +227,23 @@ void test_mat4x4_mul_vec4(void){
 	}
 }
 
+/*
+I'm not entirely sure the purposed of this but
+it appears to be given a 4x4 matrix and giving it x,y,z properties 
+*/
 void test_mat4x4_translate(void){
 	//TODO
+	TEST_IGNORE_MESSAGE("coming back to flush this out once I figure out the logic behind it and get some values to test against");
 }
 
 void test_mat4x4_translate_in_place(void){
 	//TODO
+	TEST_IGNORE_MESSAGE("coming back to flush this out once I figure out the logic behind it and get some values to test against");
 }
 
 void test_mat4x4_from_vec3_mul_outer(void){
 	//TODO
+	TEST_IGNORE_MESSAGE("coming back to flush this out once I figure out the logic behind it and get some values to test against");
 }
 
 void test_mat4x4_rotate(void){
