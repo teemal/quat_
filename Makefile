@@ -1,16 +1,17 @@
 CC=gcc
-CFLAGS= -Wextra  -Wall -Waddress \
+CFLAGS= -Wextra  -Wall -Wno-sizeof-array-argument -Waddress \
 -Wno-attribute-warning -Wsizeof-pointer-div -Wstack-protector \
 -Wsuggest-final-types   -Wsuggest-final-methods \
 -Wvector-operation-performance -Wno-unused-variable #turn unused vars back on during debugging
+LDFLAGS=-lm
 
-all: quat lin_math_test
-
-quat.o: quat.c
-	$(CC) $(CFLAGS) -c quat.c
+all: lin_math_test quat_test
 
 lin_math_test:
 	$(CC) lin_math_test.c /home/osboxes/Desktop/Unity/src/unity.c -o lin_math_test
+
+quat_test.o: quat_test.c
+	$(CC) $(CFLAGS) -c quat_test.c $(LDFLAGS)
 
 clean:
 	rm -f quat lin_math_test *.o *.gch
