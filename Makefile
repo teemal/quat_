@@ -5,16 +5,23 @@ CFLAGS= -Wextra  -Wall -Wno-sizeof-array-argument -Waddress \
 -Wvector-operation-performance -Wno-unused-variable #turn unused vars back on during debugging
 LDFLAGS=-lm
 
-all: lin_math_test quat_test
+all: quat_test IMU_to_curr_vec3
 
-lin_math_test:
-	$(CC) lin_math_test.c /home/osboxes/Desktop/Unity/src/unity.c -o lin_math_test
+quat_test:
+	$(CC) $(CFLAGS) quat_test.c $(LDFLAGS) -o quat_test
 
-quat_test.o: quat_test.c
-	$(CC) $(CFLAGS) -c quat_test.c $(LDFLAGS)
+IMU_to_curr_vec3.o: IMU_to_curr_vec3.c
+	$(CC) $(CFLAGS) -c IMU_to_curr_vec3.c
+
+# RC_PWM_to_vec3: RC_PWM_to_vec3.c
+# 	$(CC) $(CFLAGS) -o  RC_PWM_to_vec3 RC_PWM_to_vec3.c IMU_to_curr_vec3.c $(LDFLAGS)
+
+
+#test_PWM_in_to_vec3.o:
+#	$(CC) $(CFLAGS) test_PWM_in_to_vec3.c $(LDFLAGS) -o test_PWM_in_to_vec3
 
 clean:
-	rm -f quat lin_math_test *.o *.gch
+	rm -f test_PWM_in_to_vec3 IMU_to_curr_vec3 quat_test *.o *.gch
 
 comment="1"
 

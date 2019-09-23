@@ -511,6 +511,14 @@ v' = v + q.w * t + cross(q.xyz, t)
 	vec3_add(r, v, t);
 	vec3_add(r, r, u);
 }
+
+LINMATH_H_FUNC void quat_from_vec3(quat out, vec3 in){
+	for(int i = 0; i < 3; i++){
+		out[i] = in[i];
+	}
+	out[3] = in[3];
+}
+
 LINMATH_H_FUNC void mat4x4_from_quat(mat4x4 M, quat q)
 {
 	float a = q[3];
